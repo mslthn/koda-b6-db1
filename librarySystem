@@ -1,0 +1,46 @@
+create table "officer" (
+    "id" serial primary key,
+    "name" varchar(80) not null
+);
+
+create table "bookshelf" (
+    "bookshelfNumber" serial primary key,
+    "category_name" varchar(30) 
+);
+
+create table "library_user" (
+    "id" serial primary key,
+    "name" varchar(80) not null,
+    "address" varchar(80),
+    "age" int,
+    "gender" varchar(20)
+);
+
+create table "category" (
+    "id" serial primary key,
+    "bookshelfNumber" int references "bookshelf"("bookshelfNumber"),
+    "name" varchar(30)
+);
+
+create table "books" (
+    "id" serial primary key,
+    "title" varchar(80) not null,
+    "year_released" int,
+    "publisher" varchar(80),
+    "author" varchar(80),
+    "bookshelfNumber" int references "bookshelf"("bookshelfNumber"),
+    "officerID" int references "officer"("id"),
+    "userID" int references "library_user"("id"),
+    "category" varchar(80) references "bookshelf" ("category")
+);
+
+insert into "officer" ("name") values ('Kinanti');
+
+insert into "bookshelf" ("category_name") values ('fiction');
+insert into "bookshelf" ("category_name") values ('non-fiction');
+
+select * from "officer";
+select * from "bookshelf";
+
+
+-- drop table "officer";

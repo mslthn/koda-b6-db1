@@ -15,27 +15,17 @@ erDiagram
         string bookshelfNumber FK
         string officerID FK
         string userID FK
+        string category FK
     }
 
     CATEGORY {
         string bookshelfNumber FK
-        string general
-        string fiction
-        string non-fiction
-        string teology
-        string STEM
-        string literature
-        string history
+        string name FK
     }
 
     BOOKSHELF {
         string bookshelfNumber PK
-        string general
-        string fiction
-        string non-fiction
-        string teology
-        string STEM
-        string literature
+        string category_name PK
     }
 
     OFFICER {
@@ -51,8 +41,15 @@ erDiagram
         string gender
     }
 
-BOOKS ||--|| CATEGORY : has 
-BOOKSHELF }|--o{ BOOKS : contains
+CATEGORY ||--|{ BOOKS : has 
+BOOKSHELF }|--|| CATEGORY : contains
 OFFICER }|--|{ BOOKSHELF : manage
 USER }|--o{ BOOKS : borrow
 ```
+
+<!-- string general
+string fiction
+string non-fiction
+string teology
+string STEM
+string literature -->

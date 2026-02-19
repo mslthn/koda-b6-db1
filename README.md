@@ -12,15 +12,15 @@ erDiagram
     direction TB
     
     BOOKS {
-        string title
+        string title PK
         int year_released
         string publisher
         string author
-        string genre
+        string genre FK
     }
 
     CATEGORY {
-        string fiction
+        string fiction 
         string non-fiction
         string self-development
         string history
@@ -28,6 +28,7 @@ erDiagram
     }
 
     BOOKSHELF {
+        string bookshelfNumber PK
         string general
         string fiction
         string non-fiction
@@ -42,8 +43,8 @@ erDiagram
     }
 
     USER {
-        int id
-        string name
+        int id PK, FK
+        string name PK, FK
         string address
         int age
         string gender
@@ -52,5 +53,5 @@ erDiagram
 BOOKS ||--|| CATEGORY : has 
 BOOKSHELF }|--o{ BOOKS : contains
 OFFICER }|--|{ BOOKSHELF : manage
-USER }|--|{ BOOKS : borrow
+USER }|--o{ BOOKS : borrow
 ```

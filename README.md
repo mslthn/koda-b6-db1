@@ -1,8 +1,3 @@
-<!-- membuat erd sistem perpustakaan
-buku, kategori, rak_buku, petugas, peminjam
-tentukan relasi dan kardinalitas
-tentukan tiap atribut untuk entitas
--->
 ---
 title : Library ERD
 ---
@@ -12,19 +7,25 @@ erDiagram
     direction TB
     
     BOOKS {
+        string id PK
         string title PK
         int year_released
         string publisher
         string author
-        string genre FK
+        string bookshelfNumber FK
+        string officerID FK
+        string userID FK
     }
 
     CATEGORY {
-        string fiction 
+        string bookshelfNumber FK
+        string general
+        string fiction
         string non-fiction
-        string self-development
-        string history
         string teology
+        string STEM
+        string literature
+        string history
     }
 
     BOOKSHELF {
@@ -38,7 +39,7 @@ erDiagram
     }
 
     OFFICER {
-        int id
+        string id PK
         string name
     }
 

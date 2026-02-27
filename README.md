@@ -2,7 +2,6 @@
 title : Library ERD
 ---
 ```mermaid
-
 erDiagram
     direction TB
     
@@ -19,6 +18,7 @@ erDiagram
     }
 
     CATEGORY {
+        int id PK
         string bookshelfNumber FK
         string name FK
     }
@@ -28,7 +28,7 @@ erDiagram
         string category_name PK
     }
 
-    OFFICER {
+    OFFICER {   
         string id PK
         string name
     }
@@ -41,15 +41,26 @@ erDiagram
         string gender
     }
 
+    AUTHOR {
+        int id PK
+        string name
+    }
+
+    BOOKS_AUTHOR{
+        int author_id FK
+        int books_id FK
+    }
+
+    PUBLISHER {
+        int id
+        sring name
+    }
+
 CATEGORY ||--|{ BOOKS : has 
 BOOKSHELF }|--|| CATEGORY : contains
 OFFICER }|--|{ BOOKSHELF : manage
 USER }|--o{ BOOKS : borrow
+BOOKS }|--|{ BOOKS_AUTHOR :has
+BOOKS }|--|{ AUTHOR :has
+BOOKS }|--|| PUBLISHER :has
 ```
-
-<!-- string general
-string fiction
-string non-fiction
-string teology
-string STEM
-string literature -->

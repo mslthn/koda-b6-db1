@@ -23,7 +23,7 @@ create table "category" (
 );
 
 create table "books" (
-    "id" serial primary key,
+    "id" generated always as identity primary key,
     "title" varchar(80) not null,
     "year_released" int,
     "publisher" varchar(80),
@@ -35,12 +35,60 @@ create table "books" (
 );
 
 insert into "officer" ("name") values ('Kinanti');
+insert into "officer" ("name") values ('Rara');
 
 insert into "bookshelf" ("category_name") values ('fiction');
 insert into "bookshelf" ("category_name") values ('non-fiction');
+insert into "bookshelf" ("category_name") values ('self-development');
+
+insert into "category" ("name", "bookshelfNumber") values ('fiction', '1');
+insert into "category" ("name", "bookshelfNumber") values ('non-fiction', '2');
+insert into "category" ("name", "bookshelfNumber") values ('self-development', '3');
+
+insert  into "library_user" (name, address, age, gender) values ('Ratna', 'Depok', '18', 'Female');
+insert  into "library_user" (name, address, age, gender) values ('Ajeng', 'Bekasi', '24', 'Female');
+insert  into "library_user" (name, address, age, gender) values ('Rama', 'Tangerang', '24', 'Male');
+insert  into "library_user" (name, address, age, gender) values ('Manda', 'Depok', '21', 'Female');
+insert  into "library_user" (name, address, age, gender) values ('Dewa', 'Bekasi', '25', 'Male');
+insert  into "library_user" (name, address, age, gender) values ('Dewi', 'Jakarta', '23', 'Female');
+insert  into "library_user" (name, address, age, gender) values ('Rio', 'Tangerang', '22', 'Male');
+insert  into "library_user" (name, address, age, gender) values ('Firman', 'Bogor', '25', 'Male');
+insert  into "library_user" (name, address, age, gender) values ('Dian', 'Bekasi', '20', 'Female');
+insert  into "library_user" (name, address, age, gender) values ('Fara', 'Bekasi', '20', 'Female');
+
+insert into "books"
+    (
+        -- "id", 
+        "title", 
+        "year_released", 
+        "publisher", 
+        "author"
+    )
+    values (
+        'Laskar Pelangi',
+        '2005',
+        'Bentang Pustaka',
+        'Andrea Hirata'
+    );
+insert into "books"
+    (
+        -- "id", 
+        "title", 
+        "year_released", 
+        "publisher", 
+        "author"
+    )
+    values (
+        'Catatan Seorang Demonstran',
+        '1983',
+        'Bentang Pustaka',
+        'Soe Hok Gie'
+    );
 
 select * from "officer";
 select * from "bookshelf";
+select * from "category";
+select * from "library_user";
+select * from "books";
 
-
--- drop table "officer";
+-- drop table "category";
